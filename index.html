@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Protótipo da evolução do Espaço Saúde Semantix, com teleatendimento, conteúdos, campanhas e massoterapia acessível.">
+  <title>Espaço Saúde Semantix</title>
+  <link rel="icon" type="image/png" href="assets/semantix-simbolo.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="public-header" id="public-header">
+    <div class="public-header-inner">
+      <a class="public-brand" href="#/mural" aria-label="Espaço Saúde Semantix — Mural">
+        <img src="assets/semantix-logo-positivo.png" alt="Semantix">
+        <span>Espaço Saúde</span>
+      </a>
+
+      <button class="mobile-menu-button" id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="public-navigation">
+        <span aria-hidden="true">☰</span><span class="sr-only">Abrir menu</span>
+      </button>
+
+      <nav class="public-navigation" id="public-navigation" aria-label="Navegação principal">
+        <a href="#/mural" data-nav="mural">Mural</a>
+        <a href="#/atendimento" data-nav="atendimento">Atendimento</a>
+        <a href="#/campanhas" data-nav="campanhas">Campanhas</a>
+        <a href="#/massoterapia" data-nav="massoterapia">Massoterapia</a>
+        <div class="mobile-access-row" aria-label="Opções de acessibilidade">
+          <button class="access-button" type="button" data-access="font" aria-pressed="false">Aumentar texto</button>
+          <button class="access-button" type="button" data-access="contrast" aria-pressed="false">Alto contraste</button>
+        </div>
+        <div class="mobile-utility-row">
+          <button type="button" data-language-toggle>Idioma</button>
+          <button type="button" data-help-open>Ajuda</button>
+          <a href="#/sobre">Sobre</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <button class="access-button" type="button" data-access="font" aria-pressed="false" title="Aumentar o texto">A+</button>
+        <button class="access-button" type="button" data-access="contrast" aria-pressed="false" title="Ativar alto contraste">◐</button>
+        <div class="language-control">
+          <button class="header-text-action" type="button" data-language-toggle aria-expanded="false">Idioma</button>
+          <div class="language-menu" id="language-menu" hidden><button type="button" data-language="pt-BR" aria-current="true">Português</button><button type="button" data-language="en">English</button></div>
+        </div>
+        <button class="header-text-action" type="button" data-help-open>Ajuda</button>
+        <a class="header-text-action" href="#/sobre">Sobre</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="prototype-bar" id="prototype-bar">
+    <span><strong>Protótipo do Grupo 3</strong> · conteúdos, contas e horários demonstrativos</span>
+    <span>Programa de Estágio 2026</span>
+  </div>
+
+  <main id="conteudo">
+    <section class="page" id="page-mural" data-page="mural">
+      <div class="portal-container mural-page">
+        <section class="mural-overview" aria-label="Mural e acessos de saúde">
+          <section class="community-column" aria-labelledby="community-title">
+            <div class="column-heading"><p class="section-kicker light">Mural do Bem-estar</p><h1 id="community-title">Conteúdos da comunidade</h1></div>
+            <article class="community-feature">
+              <div class="community-date" aria-hidden="true"><strong>25</strong><span>SET</span></div>
+              <div><span class="content-category">Qualidade de vida</span><h2>Como você quer se sentir nos próximos dias?</h2><p>Descanso, movimento e pequenos momentos de cuidado também podem transformar o restante do dia.</p><a href="#/artigo">Continuar lendo</a></div>
+            </article>
+            <div class="community-small-grid">
+              <article><div class="community-art accent-art" aria-hidden="true">⌂</div><span class="content-category">Mural · 22/09</span><h3>Vamos celebrar as pequenas coisas?</h3><a href="#/artigo">Ler conteúdo</a></article>
+              <article><div class="community-art orange-art" aria-hidden="true">◷</div><span class="content-category">Mural · 23/09</span><h3>Um momento para agradecer</h3><a href="#/artigo">Ler conteúdo</a></article>
+            </div>
+          </section>
+
+          <section class="care-column" aria-labelledby="mural-title">
+            <div class="care-intro"><p class="section-kicker light">Espaço Saúde Semantix</p><h1 id="mural-title">Cuidado que acolhe, orienta e está ao seu lado.</h1><p>Um ponto central para colaboradores e dependentes encontrarem orientação em saúde, conteúdos, campanhas e benefícios, de casa ou do escritório.</p></div>
+            <div class="benefit-links" aria-label="Benefícios em destaque">
+              <a href="#/atendimento"><span><strong>Atendimento e benefícios</strong><small>Vidalink, planos de saúde, Wellhub e orientação.</small></span><b aria-hidden="true">→</b></a>
+              <a href="#/massoterapia"><span><strong>Massoterapia</strong><small>Profissionais, horários e jornada acessível.</small></span><b aria-hidden="true">→</b></a>
+              <a href="#/acessibilidade"><span><strong>Acessibilidade</strong><small>Recursos digitais e orientações presenciais.</small></span><b aria-hidden="true">→</b></a>
+            </div>
+            <div class="compact-pillars"><p>Nossos pilares</p><ul><li>Acolhimento</li><li>Cuidado e acompanhamento</li><li>Retorno ao trabalho</li><li>Orientação em saúde</li><li>Integração e cuidado</li></ul></div>
+            <button class="button button-accent orientation-button" type="button" data-help-open>Preciso de orientação</button>
+          </section>
+        </section>
+
+        <section class="campaign-highlight" aria-labelledby="campaign-highlight-title">
+          <div class="campaign-ribbon" aria-hidden="true">🩷</div>
+          <div>
+            <p class="section-kicker">Campanha em destaque</p>
+            <h2 id="campaign-highlight-title">Esquenta Outubro Rosa</h2>
+            <p>Confira a iniciativa e o sorteio de inscrições para corridas solidárias divulgado pela Comunicação Interna Semantix.</p>
+          </div>
+          <a class="button button-primary" href="#/campanhas">Conhecer a campanha</a>
+        </section>
+
+        <section class="privacy-banner" aria-labelledby="privacy-title">
+          <span aria-hidden="true">🔐</span>
+          <div><p class="section-kicker light">Sua privacidade é prioridade</p><h2 id="privacy-title">Cuidado com sigilo, ética e confidencialidade.</h2><p>Informações médicas permanecem protegidas e separadas dos dados operacionais dos benefícios. Gestores visualizam somente indicadores agregados.</p></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-atendimento" data-page="atendimento" hidden>
+      <div class="service-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Atendimento</span></nav>
+        <header class="benefits-header"><p class="section-kicker light">Atendimento e benefícios</p><h1>Encontre o cuidado certo para cada momento.</h1><p>Um único lugar para entender o que existe, verificar como acessar e encontrar ajuda quando houver dúvida.</p><button class="button button-accent" type="button" data-help-open>Preciso de orientação</button></header>
+
+        <section class="benefits-grid" aria-label="Benefícios de saúde e bem-estar">
+          <article class="benefit-card featured-benefit"><div class="benefit-icon" aria-hidden="true">V</div><span class="benefit-type">Medicamentos e bem-estar</span><h2>Vidalink</h2><p>Plano de medicamentos e recursos de bem-estar conforme a modalidade contratada pela empresa.</p><button type="button" data-demo-action="No piloto, este botão direcionará para o acesso oficial da Vidalink e para as regras do benefício.">Como acessar <span aria-hidden="true">→</span></button></article>
+          <article class="benefit-card"><div class="benefit-icon" aria-hidden="true">S</div><span class="benefit-type">Plano de saúde</span><h2>SulAmérica Saúde</h2><p>Informações sobre rede, carteirinha, cobertura e canais digitais conforme o plano elegível.</p><button type="button" data-demo-action="No piloto, este botão abrirá as orientações oficiais do plano de saúde.">Ver orientações <span aria-hidden="true">→</span></button></article>
+          <article class="benefit-card"><div class="benefit-icon" aria-hidden="true">W</div><span class="benefit-type">Atividade e bem-estar</span><h2>Wellhub</h2><p>Acesso a academias, estúdios e aplicativos de bem-estar conforme o plano disponível.</p><button type="button" data-demo-action="No piloto, este botão direcionará ao acesso oficial do Wellhub.">Conhecer o benefício <span aria-hidden="true">→</span></button></article>
+          <article class="benefit-card"><div class="benefit-icon" aria-hidden="true">✚</div><span class="benefit-type">Acolhimento</span><h2>Espaço Saúde</h2><p>Teleatendimento médico, escuta qualificada e orientação para colaboradores e dependentes.</p><button type="button" data-help-open>Solicitar orientação <span aria-hidden="true">→</span></button></article>
+          <article class="benefit-card"><div class="benefit-icon" aria-hidden="true">✋</div><span class="benefit-type">Cuidado presencial</span><h2>Massoterapia</h2><p>Atendimentos em São Paulo e Londrina, com agenda, lembretes e recursos acessíveis.</p><a href="#/massoterapia">Ver massoterapia <span aria-hidden="true">→</span></a></article>
+          <article class="benefit-card pending-benefit"><div class="benefit-icon" aria-hidden="true">+</div><span class="benefit-type">Conforme elegibilidade</span><h2>Demais planos e convênios</h2><p>Outros benefícios aparecerão conforme perfil, unidade e informações validadas pelo RH.</p><button type="button" data-help-open>Consultar meu acesso <span aria-hidden="true">→</span></button></article>
+        </section>
+
+        <p class="benefits-disclaimer">Cobertura, elegibilidade, valores e canais podem variar. Informações finais devem ser sincronizadas com as fontes oficiais de RH e de cada fornecedor.</p>
+
+        <section class="data-boundary" aria-labelledby="data-boundary-title">
+          <div><p class="section-kicker">Proteção de dados</p><h2 id="data-boundary-title">Centralizar o acesso não significa misturar informações.</h2></div>
+          <p>Prontuários e conversas médicas não entram no Monday nem na agenda da massoterapia. Portal apenas direciona cada pessoa ao serviço correto; relatórios corporativos utilizam dados agregados e não clínicos.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-campanhas" data-page="campanhas" hidden>
+      <div class="service-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Campanhas</span></nav>
+        <header class="campaigns-header"><p class="section-kicker">Saúde em movimento</p><h1>Campanhas e iniciativas</h1><p>Acompanhe ações atuais e consulte o histórico de campanhas de saúde e bem-estar.</p></header>
+        <section class="campaign-feature-card" aria-labelledby="pink-title">
+          <div class="pink-visual" aria-hidden="true"><span>🩷</span><strong>OUT</strong></div>
+          <div><span class="campaign-status active">Ativa</span><span class="content-category">Campanha atual</span><h2 id="pink-title">Esquenta Outubro Rosa</h2><p>Iniciativa de conscientização com sorteio de inscrições para corridas solidárias. Regras, elegibilidade e prazos serão publicados no comunicado oficial.</p><button class="button button-primary" type="button" data-demo-action="Comunicado da campanha aberto no protótipo. Na versão real, o conteúdo virá do canal oficial de Comunicação Interna.">Ver comunicado completo</button></div>
+        </section>
+        <section class="campaign-list" aria-labelledby="campaign-list-title">
+          <div class="section-heading-inline"><div><p class="section-kicker">Histórico demonstrativo</p><h2 id="campaign-list-title">Campanhas anteriores</h2></div><p>Somente o Esquenta Outubro Rosa está ativo neste momento.</p></div>
+          <div class="campaign-archive-grid">
+            <article><div><span class="campaign-month">JAN</span><span class="campaign-status closed">Encerrada</span></div><h3>Janeiro Branco</h3><p>Conversas sobre saúde emocional, autocuidado e canais de acolhimento.</p></article>
+            <article><div><span class="campaign-month">ABR</span><span class="campaign-status closed">Encerrada</span></div><h3>Semana da Saúde</h3><p>Conteúdos de prevenção, hábitos saudáveis e orientação profissional.</p></article>
+            <article><div><span class="campaign-month">MAI</span><span class="campaign-status closed">Encerrada</span></div><h3>Movimento no home office</h3><p>Pausas ativas, ergonomia e cuidados para a rotina de trabalho remoto.</p></article>
+            <article><div><span class="campaign-month">JUN</span><span class="campaign-status closed">Encerrada</span></div><h3>Junho Vermelho</h3><p>Conscientização e informações sobre a importância da doação de sangue.</p></article>
+            <article><div><span class="campaign-month">AGO</span><span class="campaign-status closed">Encerrada</span></div><h3>Desafio de hábitos saudáveis</h3><p>Pequenos compromissos com movimento, sono, alimentação e hidratação.</p></article>
+            <article><div><span class="campaign-month">SET</span><span class="campaign-status closed">Encerrada</span></div><h3>Setembro Amarelo</h3><p>Informação responsável, acolhimento e divulgação de redes de apoio.</p></article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page" id="page-acessibilidade" data-page="acessibilidade" hidden>
+      <div class="service-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Acessibilidade</span></nav>
+        <header class="accessibility-header"><p class="section-kicker light">Proposta do piloto</p><h1>Uma jornada acessível começa antes do atendimento.</h1><p>Recursos digitais, orientação, espaço físico e procedimentos precisam funcionar como um único sistema.</p></header>
+        <section class="access-route" aria-labelledby="route-title"><div class="section-heading-inline"><div><p class="section-kicker">Como chegar</p><h2 id="route-title">Rota acessível até a sala</h2></div><p>Projeto físico deverá ser validado com usuários e por profissional habilitado.</p></div><ol><li><span>1</span><div><strong>Antes de sair</strong><p>Mapa, fotos, texto e orientação em áudio disponíveis no portal.</p></div></li><li><span>2</span><div><strong>Entrada e recepção</strong><p>Atendimento treinado, identificação clara e opção de solicitar apoio.</p></div></li><li><span>3</span><div><strong>Deslocamento</strong><p>Rota desobstruída, sinalização visual e tátil e piso tátil onde o projeto indicar.</p></div></li><li><span>4</span><div><strong>Identificação da sala</strong><p>Placa contrastante, relevo, Braille e ponto NFC ou QR com marcador tátil.</p></div></li></ol></section>
+        <section class="room-standard" aria-labelledby="room-title"><div><p class="section-kicker light">Ambiente previsível</p><h2 id="room-title">Sala organizada para autonomia</h2><p>Layout permanece fixo. Mudanças são comunicadas e apresentadas antes dos atendimentos.</p></div><ul><li>Circulação sem fios, tapetes ou obstáculos</li><li>Materiais em posições padronizadas</li><li>Etiquetas táteis, letras grandes e contraste</li><li>Espaço para cadeira de rodas e transferência</li><li>Alertas visuais e sonoros</li><li>Estação SELENA com monitor grande, voz, texto e teclado</li></ul></section>
+        <section class="inclusive-options" aria-labelledby="options-title"><div class="section-heading-inline"><div><p class="section-kicker">Desenho universal</p><h2 id="options-title">Uma informação, diferentes formas de acesso</h2></div><p>Nenhum canal é obrigatório.</p></div><div class="inclusive-grid"><article><strong>Visual e baixa visão</strong><p>Leitor de tela, áudio, contraste, zoom, Braille e referências táteis.</p></article><article><strong>Auditiva</strong><p>Texto, legendas, alertas visuais e vibração.</p></article><article><strong>Física</strong><p>Circulação acessível, comandos por voz ou teclado e mobiliário adequado.</p></article><article><strong>Sensorial e cognitiva</strong><p>Fluxo previsível, linguagem simples e iluminação ajustável.</p></article></div></section>
+      </div>
+    </section>
+
+    <section class="page" id="page-sobre" data-page="sobre" hidden>
+      <div class="service-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Sobre</span></nav>
+        <section class="about-hero"><p class="section-kicker light">Sobre o Espaço Saúde</p><h1>Um ponto de encontro para cuidado, informação e autonomia.</h1><p>Esta proposta evolui o canal já existente na Semantix e reúne, em uma experiência acessível, conteúdos, campanhas, benefícios e serviços de saúde e bem-estar.</p></section>
+        <section class="about-grid" aria-label="Princípios do portal"><article><span>01</span><h2>Um único ponto de acesso</h2><p>Informações atualizadas ficam reunidas, sem depender de procurar mensagens antigas ou descobrir com quem falar.</p></article><article><span>02</span><h2>Acessível para diferentes pessoas</h2><p>Voz, texto, contraste, ampliação, teclado e alternativas presenciais coexistem na mesma jornada.</p></article><article><span>03</span><h2>Privacidade por princípio</h2><p>Dados médicos permanecem separados das informações operacionais necessárias para administrar benefícios.</p></article></section>
+        <section class="about-project"><div><p class="section-kicker">Protótipo</p><h2>Projeto do Grupo 3</h2><p>Hipótese desenvolvida para o Desafio de Inovação do Programa de Estágio 2026. Conteúdos, contas, profissionais e horários devem ser validados antes de uma implantação real.</p></div><button class="button button-accent" type="button" data-help-open>Preciso de orientação</button></section>
+      </div>
+    </section>
+
+    <section class="page" id="page-artigo" data-page="artigo" hidden>
+      <div class="article-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Conteúdos</span></nav>
+        <article class="article-layout">
+          <header class="article-header">
+            <span class="content-category">Mural do Bem-estar · 25/09/2026</span>
+            <h1>Como você quer se sentir nos próximos dias?</h1>
+            <p class="article-lead">Cuidado também pode significar desacelerar e reconhecer aquilo de que precisamos.</p>
+          </header>
+          <aside class="article-summary"><strong>Neste conteúdo</strong><a href="#pausas">Pequenas pausas</a><a href="#escolha">Uma escolha possível</a><a href="#beneficios">Benefícios disponíveis</a></aside>
+          <div class="article-body">
+            <p>Nem sempre precisamos de grandes planos para cuidar de nós. Às vezes, um momento de descanso, uma caminhada, ouvir uma música ou simplesmente não fazer nada já pode fazer diferença.</p>
+            <h2 id="pausas">Pequenas pausas</h2>
+            <p>Pausas intencionais ajudam a observar como estamos nos sentindo e a retomar as atividades com mais presença. O importante é encontrar uma possibilidade compatível com a própria rotina.</p>
+            <blockquote>Escolha hoje uma coisa simples que você gostaria de fazer para cuidar de si.</blockquote>
+            <h2 id="escolha">Uma escolha possível</h2>
+            <p>Alongar o corpo, beber água, respirar por alguns minutos ou reservar um horário de massoterapia são exemplos de ações que podem ser incorporadas ao dia.</p>
+            <h2 id="beneficios">Benefícios disponíveis</h2>
+            <p>O Espaço Saúde Semantix reúne informações e caminhos de acesso aos serviços e benefícios de saúde e bem-estar oferecidos pela empresa.</p>
+            <a class="button button-primary" href="#/massoterapia">Conhecer a massoterapia</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="page-massoterapia" data-page="massoterapia" hidden>
+      <div class="service-container">
+        <nav class="breadcrumb" aria-label="Caminho da página"><a href="#/mural">Mural</a><span>/</span><span>Massoterapia</span></nav>
+
+        <div class="massotherapy-toolbar"><p>Acesso único para colaboradores e profissionais.</p><button class="button button-primary" type="button" data-login-open>Entrar com Google</button></div>
+
+        <section class="massotherapy-overview" aria-labelledby="service-title">
+          <article class="massotherapy-info-panel">
+            <p class="section-kicker light">Benefício de saúde e bem-estar</p>
+            <h1 id="service-title">Massoterapia na Semantix</h1>
+            <p>Consulte profissionais e horários, receba lembretes e encontre orientações acessíveis para chegar e utilizar o serviço com autonomia.</p>
+            <div class="massotherapy-facts" aria-label="Informações do serviço">
+              <div><strong>20 min</strong><span>duração demonstrativa da sessão</span></div>
+              <div><strong>2 unidades</strong><span>São Paulo e Londrina</span></div>
+              <div><strong>Agenda integrada</strong><span>confirmações, cancelamentos e fila de espera</span></div>
+              <div><strong>Acesso inclusivo</strong><span>voz, teclado, tela ampliada e apoio presencial</span></div>
+            </div>
+            <a class="text-link light-link" href="#/acessibilidade">Conhecer a jornada física acessível →</a>
+          </article>
+
+          <aside class="team-panel" aria-labelledby="team-title">
+            <p class="section-kicker light">Profissionais</p><h2 id="team-title">Conheça a equipe</h2>
+            <div class="team-stack">
+              <article><span class="person-avatar purple">R</span><div><h3>Regina</h3><p>São Paulo · manhã</p><small>Atendimentos em dias selecionados.</small></div></article>
+              <article><span class="person-avatar pink">S</span><div><h3>Silvana</h3><p>São Paulo · tarde</p><small>Atendimentos em dias selecionados.</small></div></article>
+              <article><span class="person-avatar green">C</span><div><h3>Cláudio</h3><p>Londrina · manhã e tarde</p><small>Atendimentos em dias selecionados.</small></div></article>
+              <div class="additional-team" id="additional-team" hidden><strong>Equipe completa</strong><p>Outros profissionais de São Paulo e Londrina serão exibidos após a sincronização do cadastro oficial.</p></div>
+            </div>
+            <div class="team-actions"><button class="team-more" id="team-more" type="button" aria-expanded="false" aria-controls="additional-team">Ver toda a equipe +</button><button class="button button-accent" type="button" data-help-open>Preciso de orientação</button></div>
+          </aside>
+        </section>
+
+        <section class="massotherapy-flow" aria-labelledby="flow-title"><div><p class="section-kicker">Jornada integrada</p><h2 id="flow-title">Da escolha do horário até a chegada à sala.</h2></div><ol><li><span>1</span><strong>Entre</strong><p>Perfil reconhecido pela conta Google.</p></li><li><span>2</span><strong>Agende</strong><p>Escolha profissional, dia e horário.</p></li><li><span>3</span><strong>Receba lembretes</strong><p>Confirme, cancele ou entre na fila.</p></li><li><span>4</span><strong>Chegue com autonomia</strong><p>Orientação acessível e check-in.</p></li></ol></section>
+
+        <section class="selena-preview" aria-labelledby="selena-preview-title">
+          <div class="selena-mark moon-mark"><img src="assets/selena-mascote.png" alt="Mascote SELENA em forma de lua"></div>
+          <div><p class="section-kicker light">Acessibilidade profissional</p><h2 id="selena-preview-title">SELENA acompanha a rotina.</h2><p><strong>Solução de Escuta, Leitura e Navegação Acessível.</strong> Agenda e alterações podem ser consultadas por voz, texto ou comandos na tela.</p></div>
+          <button class="button button-accent" type="button" data-login-open>Acessar demonstração</button>
+        </section>
+      </div>
+    </section>
+
+    <section class="page private-page" id="page-colaborador" data-page="colaborador" hidden>
+      <header class="private-header">
+        <a class="private-brand" href="#/mural"><img src="assets/semantix-logo-negativo.png" alt="Semantix"><span>Massoterapia</span></a>
+        <div class="private-actions">
+          <button class="access-button" type="button" data-access="font" aria-pressed="false" title="Aumentar o texto">A+</button>
+          <button class="access-button" type="button" data-access="contrast" aria-pressed="false" title="Ativar alto contraste">◐</button>
+          <div class="signed-user"><span>AF</span><div><strong>Alicia Faria</strong><small>Colaboradora</small></div></div>
+          <a class="private-logout" href="#/mural">Sair</a>
+        </div>
+      </header>
+
+      <div class="private-main collaborator-main">
+        <section class="private-title-row">
+          <div><p class="section-kicker">Área da colaboradora</p><h1>Olá, Alicia.</h1><p>Escolha um profissional para consultar os horários disponíveis.</p></div>
+          <aside class="appointment-chip"><span>Próximo atendimento</span><strong>30 set. · 15h30</strong><small>Silvana · São Paulo</small></aside>
+        </section>
+
+        <section aria-labelledby="choose-title">
+          <div class="section-heading-inline"><div><p class="section-kicker">Etapa 1 de 3</p><h2 id="choose-title">Escolha o massoterapeuta</h2></div><p>Disponibilidade organizada por profissional e unidade.</p></div>
+          <div class="professional-grid">
+            <button class="professional-card" type="button" data-professional="regina" aria-pressed="false"><span class="person-avatar purple">R</span><span><strong>Regina</strong><em>São Paulo · manhã</em><small>Próximo horário: segunda, 8h30</small></span><b>Ver agenda →</b></button>
+            <button class="professional-card" type="button" data-professional="silvana" aria-pressed="false"><span class="person-avatar pink">S</span><span><strong>Silvana</strong><em>São Paulo · tarde</em><small>Próximo horário: segunda, 13h30</small></span><b>Ver agenda →</b></button>
+            <button class="professional-card" type="button" data-professional="claudio" aria-pressed="false"><span class="person-avatar green">C</span><span><strong>Cláudio</strong><em>Londrina · manhã e tarde</em><small>Próximo horário: segunda, 9h</small></span><b>Ver agenda →</b></button>
+          </div>
+        </section>
+
+        <section class="calendar-section" id="calendar-section" hidden aria-labelledby="calendar-title">
+          <div class="selected-professional">
+            <div class="selected-professional-main"><span class="person-avatar purple" id="selected-avatar">R</span><div><p class="section-kicker">Etapa 2 de 3</p><h2 id="calendar-title">Agenda de <span id="selected-name">Regina</span></h2><p id="selected-details">São Paulo · manhã · sessões de 20 minutos</p></div></div>
+            <div class="selected-actions"><button class="button button-outline" id="read-calendar" type="button">🔊 Ouvir disponibilidade</button><button class="text-link button-reset" id="change-professional" type="button">Trocar profissional</button></div>
+          </div>
+          <div class="booking-calendar">
+            <div class="month-panel">
+              <div class="month-header"><button type="button" id="previous-month" aria-label="Mês anterior">‹</button><h3 id="month-title">Setembro de 2026</h3><button type="button" id="next-month" aria-label="Próximo mês">›</button></div>
+              <div class="weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+              <div class="month-grid" id="month-grid" role="grid" aria-label="Calendário de dias disponíveis"></div>
+              <div class="calendar-legend"><span><i class="available"></i>Disponível</span><span><i class="selected"></i>Selecionado</span><span><i></i>Indisponível</span></div>
+            </div>
+            <div class="times-panel">
+              <div class="times-header"><div><p class="section-kicker">Etapa 3 de 3</p><h3 id="selected-date-title">Selecione um dia</h3></div><small>Horário de Brasília</small></div>
+              <p id="times-instruction">Dias destacados possuem horários disponíveis.</p>
+              <div class="time-slots" id="time-slots" aria-live="polite"><div class="empty-times">◷<span>Escolha um dia disponível no calendário.</span></div></div>
+              <div class="booking-summary" id="booking-summary" hidden><div><span>Horário selecionado</span><strong id="selected-slot-summary">—</strong></div><button class="button button-primary" id="review-booking" type="button">Revisar e confirmar</button></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="page private-page" id="page-massoterapeuta" data-page="massoterapeuta" hidden>
+      <header class="private-header professional-private-header">
+        <a class="private-brand" href="#/mural"><img src="assets/semantix-logo-negativo.png" alt="Semantix"><span>Agenda profissional</span></a>
+        <div class="private-actions">
+          <button class="access-button" type="button" data-access="font" aria-pressed="false" title="Aumentar o texto">A+</button>
+          <button class="access-button" type="button" data-access="contrast" aria-pressed="false" title="Ativar alto contraste">◐</button>
+          <div class="signed-user"><span>RS</span><div><strong>Regina Silva</strong><small>Massoterapeuta</small></div></div>
+          <a class="private-logout" href="#/mural">Sair</a>
+        </div>
+      </header>
+
+      <div class="professional-app">
+        <div class="professional-workspace">
+          <section class="professional-welcome">
+            <div><p class="section-kicker light">Sexta-feira · 25 de setembro</p><h1>Bom dia, Regina.</h1><p>Sua agenda está atualizada. Uma mudança ocorreu desde o último acesso.</p></div>
+            <div class="professional-welcome-actions"><aside class="weather-card" aria-label="Clima em São Paulo, dados demonstrativos"><span aria-hidden="true">☀</span><div><small>São Paulo · demonstrativo</small><strong>22 °C</strong><p>Parcialmente nublado</p></div></aside><button class="button button-accent large-button" id="open-selena" type="button"><span aria-hidden="true">✦</span> Falar com a SELENA</button></div>
+          </section>
+
+          <section class="professional-grid-layout">
+            <article class="next-client-card">
+              <div class="next-client-top"><div><p class="section-kicker">Próximo atendimento</p><div class="large-time">10h30</div><h2>João Burgos</h2><p>Massagem rápida · 20 minutos · Sala Bem-estar</p></div><div class="arrival-state" id="arrival-state"><span>Chegada</span><strong>Aguardando</strong></div></div>
+              <div class="client-actions"><button class="button button-primary" id="confirm-arrival" type="button">Confirmar chegada</button><button class="button button-outline" id="start-session" type="button">Iniciar atendimento</button><button class="button button-outline" id="read-client" type="button">🔊 Ouvir detalhes</button></div>
+              <div class="metrics-row"><div><strong>6</strong><span>agendados</span></div><div><strong>1</strong><span>vaga livre</span></div><div><strong>4h</strong><span>restantes</span></div></div>
+              <div class="change-alert"><span aria-hidden="true">!</span><p><strong>Alteração recente:</strong> o horário das 11h foi preenchido após um cancelamento. Sua agenda já está atualizada.</p></div>
+            </article>
+
+            <aside class="today-schedule">
+              <div class="schedule-heading"><div><p class="section-kicker">Minha rotina</p><h2>Agenda de hoje</h2></div><button class="icon-action" id="read-day" type="button" title="Ouvir resumo">🔊</button></div>
+              <ol class="schedule-list">
+                <li class="done"><time>09h00</time><i></i><div><strong>Cláudio</strong><span>Finalizado</span></div><b>Concluído</b></li>
+                <li class="done"><time>09h30</time><i></i><div><strong>Evellyn</strong><span>Finalizado</span></div><b>Concluído</b></li>
+                <li class="next"><time>10h30</time><i></i><div><strong>João</strong><span>Próximo atendimento</span></div><b>Próximo</b></li>
+                <li><time>11h00</time><i></i><div><strong>Geovana</strong><span>Presença confirmada</span></div><b>Confirmado</b></li>
+                <li class="free"><time>11h30</time><i></i><div><strong>Horário livre</strong><span>Disponível para encaixe</span></div><b>Livre</b></li>
+              </ol>
+            </aside>
+          </section>
+        </div>
+
+        <aside class="selena-panel" id="selena-panel" aria-labelledby="selena-title">
+          <div class="selena-panel-header">
+            <div class="selena-identity"><span class="selena-avatar moon-avatar"><img src="assets/selena-mascote.png" alt="Mascote SELENA em forma de lua"></span><div><strong id="selena-title">SELENA</strong><small>Solução de Escuta, Leitura e Navegação Acessível</small></div></div>
+            <button class="selena-close" id="selena-close" type="button" aria-label="Fechar a SELENA">×</button>
+          </div>
+
+          <div class="selena-status" id="selena-status"><i></i><span>Pronta para ajudar</span></div>
+          <div class="selena-conversation" id="selena-conversation" aria-live="polite">
+            <div class="message selena-message"><span>SELENA</span><p>Olá, Regina. Posso ler sua agenda, informar alterações ou verificar o próximo atendimento.</p></div>
+          </div>
+
+          <div class="selena-suggestions" aria-label="Sugestões de perguntas">
+            <button type="button" data-selena-command="Como está minha agenda hoje?">Minha agenda de hoje</button>
+            <button type="button" data-selena-command="Quem é o próximo atendimento?">Próximo atendimento</button>
+            <button type="button" data-selena-command="Houve alguma mudança?">Alterações</button>
+            <button type="button" data-selena-command="Como está o clima?">Clima</button>
+          </div>
+
+          <div class="wake-word-area">
+            <button class="wake-button" id="wake-button" type="button"><span aria-hidden="true">◉</span><strong>Ativar “Oi, SELENA”</strong><small>Permite demonstrar a palavra de ativação enquanto esta página estiver aberta.</small></button>
+          </div>
+
+          <form class="selena-input" id="selena-form">
+            <label class="sr-only" for="selena-text">Digite uma mensagem para a SELENA</label>
+            <input id="selena-text" type="text" autocomplete="off" placeholder="Digite ou diga “Oi, SELENA”">
+            <button type="submit" aria-label="Enviar mensagem">➤</button>
+          </form>
+          <p class="selena-disclaimer">Demonstração local: respostas e dados são simulados. Integração com Gemini e Google Calendar faz parte da evolução proposta.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="public-footer" id="public-footer">
+    <div><img src="assets/semantix-logo-negativo.png" alt="Semantix"><span>Espaço Saúde</span></div>
+    <p>Evolução conceitual do canal existente · Protótipo do Grupo 3 · Desafio de Inovação 2026</p>
+    <nav aria-label="Links do rodapé"><a href="#/mural">Mural</a><a href="#/atendimento">Atendimento</a><a href="#/campanhas">Campanhas</a><a href="#/massoterapia">Massoterapia</a><a href="#/sobre">Sobre</a></nav>
+  </footer>
+
+  <div class="modal-backdrop" id="confirmation-modal" hidden>
+    <section class="confirmation-modal" role="dialog" aria-modal="true" aria-labelledby="confirmation-title">
+      <button class="modal-close" id="modal-close" type="button" aria-label="Fechar">×</button>
+      <div id="review-state">
+        <span class="confirmation-icon" aria-hidden="true">✓</span><p class="section-kicker">Revisão do agendamento</p><h2 id="confirmation-title">Confirme os dados</h2>
+        <dl><div><dt>Profissional</dt><dd id="modal-professional">—</dd></div><div><dt>Unidade</dt><dd id="modal-location">—</dd></div><div><dt>Data e horário</dt><dd id="modal-date-time">—</dd></div><div><dt>Duração</dt><dd>20 minutos</dd></div></dl>
+        <p class="confirmation-note">Depois da confirmação, colaborador e profissional recebem a mesma atualização.</p>
+        <div class="modal-actions"><button class="button button-outline" id="modal-back" type="button">Voltar</button><button class="button button-primary" id="confirm-booking" type="button">Confirmar agendamento</button></div>
+      </div>
+      <div class="success-state" id="success-state" hidden><span>✓</span><h2>Agendamento confirmado!</h2><p id="success-message">Seu horário foi reservado.</p><p class="confirmation-note">Você receberá um lembrete antes do atendimento.</p><button class="button button-primary" id="finish-booking" type="button">Concluir</button></div>
+    </section>
+  </div>
+
+  <div class="info-backdrop" id="login-modal" hidden>
+    <section class="info-modal login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <button class="modal-close" type="button" data-login-close aria-label="Fechar login">×</button>
+      <div class="login-modal-brand"><img src="assets/semantix-logo-positivo.png" alt="Semantix"><span>Massoterapia</span></div>
+      <p class="section-kicker">Acesso ao serviço</p>
+      <h2 id="login-title">Entre para continuar</h2>
+      <p>Use sua conta Google vinculada à Semantix. O sistema encaminhará você para a área correspondente ao seu perfil.</p>
+      <button class="google-button" id="google-button" type="button"><span class="google-g" aria-hidden="true">G</span> Continuar com Google</button>
+      <div class="login-security"><span aria-hidden="true">⌾</span><p><strong>Acesso seguro</strong><br>Perfil e permissões são verificados após a autenticação.</p></div>
+      <div class="demo-account-picker" id="demo-account-picker" hidden>
+        <div class="picker-heading"><strong>Escolha uma conta demonstrativa</strong><span>Protótipo</span></div>
+        <p>No produto real, o perfil será reconhecido automaticamente pela conta conectada.</p>
+        <button type="button" data-demo-account="colaborador"><span class="account-avatar">AF</span><span><strong>Alicia Faria</strong><small>alicia.faria@demo.semantix.ai</small></span><b>Colaboradora</b></button>
+        <button type="button" data-demo-account="massoterapeuta"><span class="account-avatar pro">RS</span><span><strong>Regina Silva</strong><small>regina@demo.semantix.ai</small></span><b>Massoterapeuta</b></button>
+      </div>
+      <p class="prototype-login-note">Demonstração visual: nenhuma autenticação ou dado real é utilizado.</p>
+    </section>
+  </div>
+
+  <div class="info-backdrop" id="help-modal" hidden>
+    <section class="info-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <button class="modal-close" type="button" data-help-close aria-label="Fechar ajuda">×</button>
+      <p class="section-kicker">Ajuda</p><h2 id="help-title">Como podemos orientar?</h2>
+      <p>Escolha o assunto. No produto real, cada opção direcionará para o canal oficial correspondente.</p>
+      <div class="help-options">
+        <button type="button" data-help-route="atendimento"><span>✚</span><span><strong>Benefícios e atendimento</strong><small>Vidalink, planos, Wellhub e Espaço Saúde.</small></span></button>
+        <button type="button" data-help-route="massoterapia"><span>✋</span><span><strong>Massoterapia</strong><small>Agendamento, cancelamento ou acesso.</small></span></button>
+        <button type="button" data-help-route="acessibilidade"><span>◉</span><span><strong>Acessibilidade</strong><small>Recursos digitais e orientação para chegar à sala.</small></span></button>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
