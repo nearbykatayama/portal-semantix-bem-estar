@@ -65,6 +65,18 @@
   if (!location.hash || !location.hash.startsWith('#/')) location.hash = '#/mural';
   else routeToPage();
 
+  const dailyQuotes = [
+    'Cuidar de si também é uma forma de seguir em frente com mais presença.',
+    'Pequenas pausas podem abrir espaço para escolhas mais conscientes.',
+    'Pedir ajuda é um gesto de cuidado, não um sinal de fraqueza.',
+    'Bem-estar começa quando reconhecemos aquilo de que precisamos.',
+    'Respeitar seus limites também faz parte de uma rotina saudável.',
+    'Cuidado compartilhado transforma o ambiente de trabalho.',
+    'Hoje, escolha um gesto possível de cuidado com você.'
+  ];
+  const quoteTarget = $('#daily-quote-text');
+  if (quoteTarget) quoteTarget.textContent = dailyQuotes[new Date().getDay()];
+
   mobileMenuButton.addEventListener('click', () => {
     const open = publicNavigation.classList.toggle('open');
     mobileMenuButton.setAttribute('aria-expanded', String(open));
@@ -111,7 +123,14 @@
   }
   $$('[data-login-open]').forEach((button) => button.addEventListener('click', openLoginModal));
   $$('[data-login-close]').forEach((button) => button.addEventListener('click', () => setModal(loginModal, false)));
-  $$('[data-help-open]').forEach((button) => button.addEventListener('click', () => setModal(helpModal, true)));
+  $$('[data-help-open]').forEach((button) => button.addEventListener('click', () => {
+    if (!button.dataset.helpPanel) {
+      const detail = $('#help-detail');
+      if (detail) detail.hidden = true;
+    }
+    setModal(helpModal, true);
+    helpModal?.querySelector('.help-directory-modal')?.scrollTo({ top: 0, behavior: 'auto' });
+  }));
   $$('[data-help-close]').forEach((button) => button.addEventListener('click', () => setModal(helpModal, false)));
   [loginModal, helpModal].forEach((modal) => modal?.addEventListener('click', (event) => {
     if (event.target === modal) setModal(modal, false);
@@ -125,6 +144,211 @@
     location.hash = `#/${route}`;
   }));
 
+  const helpDetail = $('#help-detail');
+  const helpContent = {
+    health: {
+      title: 'Espaço Saúde',
+      html: '<p>Contatos encontrados no histórico de junho de 2025. Confirme a vigência com RH antes do uso oficial:</p><ul><li>São Paulo: <a href="tel:+5511971895200">(11) 97189-5200</a></li><li>Londrina: <a href="tel:+5543988738885">(43) 98873-8885</a></li><li>E-mail: <a href="mailto:espacosaude@atos.net">espacosaude@atos.net</a></li></ul><p>Para emergências, use os canais públicos indicados em “Ajuda urgente”.</p>'
+    },
+    mental: {
+      title: 'Apoio psicológico e saúde mental',
+      html: '<p>O portal reúne acolhimento do Espaço Saúde, benefícios psicológicos elegíveis e conteúdos de prevenção. Também direciona dúvidas sobre riscos psicossociais relacionados ao trabalho e NR‑1.</p><p><strong>Privacidade:</strong> informações clínicas não devem aparecer no mural nem ser compartilhadas com gestores.</p>'
+    },
+    nr1: {
+      title: 'NR‑1 e riscos psicossociais',
+      html: '<p>Fatores como sobrecarga, assédio, falta de autonomia, apoio insuficiente e isolamento no trabalho remoto devem ser tratados a partir das condições e da organização do trabalho.</p><p>No portal oficial, este caminho será conectado a SST, RH e CIPA, com canal protegido para participação dos trabalhadores e sem exposição individual no mural.</p>'
+    },
+    women: {
+      title: 'Saúde, equidade e proteção das mulheres',
+      html: '<p>Reúne orientação sobre saúde da mulher, prevenção, maternidade, climatério, equidade e enfrentamento à violência.</p><p>Em situação de violência, o Ligue 180 oferece orientação; se houver risco imediato, acione o 190.</p>'
+    },
+    inclusion: {
+      title: 'Respeito, diversidade e inclusão',
+      html: '<p>Direcionamento para situações de racismo, capacitismo, LGBTfobia, intolerância religiosa, barreiras de acessibilidade e outras formas de discriminação.</p><p>Demandas de adaptação podem seguir para RH e SST; relatos de conduta devem utilizar o canal de ética oficial.</p>'
+    },
+    ethics: {
+      title: 'Ética, respeito e denúncia',
+      html: '<p>Use o canal corporativo oficial para relatar assédio, racismo, capacitismo, LGBTfobia, violência ou outra conduta inadequada. O endereço e as regras de anonimato ainda precisam ser integrados e validados pela empresa.</p><p>Em risco imediato, acione a emergência; não aguarde retorno por e-mail.</p>'
+    },
+    work: {
+      title: 'RH, SST e CIPA',
+      html: '<p>Este caminho será conectado aos contatos oficiais de Recursos Humanos, Saúde e Segurança do Trabalho e CIPA conforme unidade e tema.</p><p>Também poderá receber solicitações de acessibilidade e adaptação razoável, sem expor diagnóstico no mural.</p>'
+    },
+    urgent: {
+      title: 'Ajuda urgente',
+      html: '<p><strong>Se houver risco imediato, não espere uma resposta corporativa:</strong></p><ul><li>Emergência médica — <a href="tel:192">SAMU 192</a></li><li>Risco ou violência em andamento — <a href="tel:190">Polícia Militar 190</a></li><li>Apoio emocional e prevenção do suicídio — <a href="tel:188">CVV 188</a>, gratuito, 24 horas</li><li>Violência contra a mulher — <a href="tel:180">Ligue 180</a></li></ul><p>Estes são canais públicos nacionais. O portal não substitui atendimento médico ou de emergência.</p>'
+    }
+  };
+
+  $$('[data-help-panel]').forEach((button) => button.addEventListener('click', () => {
+    const content = helpContent[button.dataset.helpPanel];
+    if (!content || !helpDetail) return;
+    helpDetail.innerHTML = `<h3>${content.title}</h3>${content.html}`;
+    helpDetail.hidden = false;
+    helpDetail.setAttribute('tabindex', '-1');
+    helpDetail.focus();
+  }));
+
+  // Community prototype: photo preview, local post, likes and comments.
+  const communityForm = $('#community-form');
+  const communityPhoto = $('#community-photo');
+  const communityPhotoPreview = $('#community-photo-preview');
+  const communityPhotoImage = $('#community-photo-image');
+  let communityPhotoUrl = '';
+
+  function clearCommunityPhoto() {
+    if (communityPhotoUrl) URL.revokeObjectURL(communityPhotoUrl);
+    communityPhotoUrl = '';
+    if (communityPhoto) communityPhoto.value = '';
+    if (communityPhotoImage) communityPhotoImage.removeAttribute('src');
+    if (communityPhotoPreview) communityPhotoPreview.hidden = true;
+  }
+
+  communityPhoto?.addEventListener('change', () => {
+    const file = communityPhoto.files?.[0];
+    if (!file) return clearCommunityPhoto();
+    if (!file.type.startsWith('image/') || file.size > 8 * 1024 * 1024) {
+      clearCommunityPhoto();
+      showToast('Escolha uma imagem de até 8 MB.');
+      return;
+    }
+    clearCommunityPhoto();
+    communityPhotoUrl = URL.createObjectURL(file);
+    communityPhotoImage.src = communityPhotoUrl;
+    communityPhotoPreview.hidden = false;
+  });
+  $('#remove-community-photo')?.addEventListener('click', clearCommunityPhoto);
+
+  function bindSocialPost(post) {
+    const likeButton = $('[data-like]', post);
+    const commentButton = $('[data-comment-toggle]', post);
+    const commentForm = $('.inline-comment', post);
+    likeButton?.addEventListener('click', () => {
+      const count = $('b', likeButton);
+      const liked = likeButton.classList.toggle('liked');
+      likeButton.setAttribute('aria-pressed', String(liked));
+      $('span', likeButton).textContent = liked ? '♥' : '♡';
+      count.textContent = String(Math.max(0, Number(count.textContent) + (liked ? 1 : -1)));
+    });
+    commentButton?.addEventListener('click', () => {
+      if (!commentForm) return;
+      commentForm.hidden = !commentForm.hidden;
+      if (!commentForm.hidden) $('input', commentForm)?.focus();
+    });
+    commentForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = $('input', commentForm);
+      if (!input?.value.trim()) return;
+      const preview = document.createElement('div');
+      preview.className = 'post-comment-preview';
+      const author = document.createElement('strong');
+      author.textContent = 'Alicia Faria';
+      const paragraph = document.createElement('p');
+      paragraph.textContent = input.value.trim();
+      preview.append(author, paragraph);
+      post.insertBefore(preview, $('.social-actions', post));
+      const count = $('b', commentButton);
+      count.textContent = String(Number(count.textContent) + 1);
+      input.value = '';
+      commentForm.hidden = true;
+      showToast('Comentário registrado nesta demonstração.');
+    });
+  }
+
+  $$('.social-post').forEach(bindSocialPost);
+  communityForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const textValue = $('#community-text').value.trim();
+    if (!textValue && !communityPhotoUrl) {
+      showToast('Escreva uma mensagem ou adicione uma foto.');
+      return;
+    }
+    const post = document.createElement('article');
+    post.className = 'social-post';
+    const header = document.createElement('header');
+    const avatar = document.createElement('span');
+    avatar.className = 'social-avatar';
+    avatar.textContent = 'AF';
+    const identity = document.createElement('div');
+    const author = document.createElement('strong');
+    author.textContent = 'Alicia Faria';
+    const meta = document.createElement('small');
+    meta.textContent = `Agora · ${$('#community-category').value}`;
+    identity.append(author, meta);
+    header.append(avatar, identity);
+    post.appendChild(header);
+    if (textValue) {
+      const paragraph = document.createElement('p');
+      paragraph.textContent = textValue;
+      post.appendChild(paragraph);
+    }
+    if (communityPhotoUrl) {
+      const image = document.createElement('img');
+      image.src = communityPhotoUrl;
+      image.alt = 'Foto adicionada à publicação';
+      post.appendChild(image);
+      communityPhotoUrl = '';
+      communityPhoto.value = '';
+      communityPhotoPreview.hidden = true;
+    }
+    const actions = document.createElement('div');
+    actions.className = 'social-actions';
+    actions.innerHTML = '<button type="button" data-like aria-pressed="false"><span>♡</span> Curtir <b>0</b></button><button type="button" data-comment-toggle>Comentar <b>0</b></button>';
+    const comment = document.createElement('form');
+    comment.className = 'inline-comment';
+    comment.hidden = true;
+    comment.innerHTML = '<label class="sr-only">Escreva um comentário</label><input type="text" maxlength="200" placeholder="Escreva um comentário"><button type="submit">Enviar</button>';
+    post.append(actions, comment);
+    $('#community-feed').prepend(post);
+    bindSocialPost(post);
+    communityForm.reset();
+    $('#community-text').focus();
+    showToast('Publicação adicionada ao protótipo.');
+  });
+
+  $$('[data-campaign-filter]').forEach((button) => button.addEventListener('click', () => {
+    const category = button.dataset.campaignFilter;
+    $$('[data-campaign-filter]').forEach((filter) => filter.classList.toggle('active', filter === button));
+    $$('#campaign-archive-grid [data-campaign-category]').forEach((card) => {
+      card.hidden = category !== 'all' && card.dataset.campaignCategory !== category;
+    });
+  }));
+
+  const articleLike = $('#article-like');
+  articleLike?.addEventListener('click', () => {
+    const liked = articleLike.classList.toggle('liked');
+    const count = $('b', articleLike);
+    articleLike.setAttribute('aria-pressed', String(liked));
+    $('span', articleLike).textContent = liked ? '♥' : '♡';
+    count.textContent = String(Number(count.textContent) + (liked ? 1 : -1));
+  });
+
+  $('#article-comment-form')?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = $('#article-comment');
+    const value = input.value.trim();
+    if (!value) {
+      showToast('Escreva um comentário antes de enviar.');
+      return;
+    }
+    const comment = document.createElement('article');
+    const avatar = document.createElement('span');
+    avatar.className = 'social-avatar';
+    avatar.textContent = 'AF';
+    const content = document.createElement('div');
+    const author = document.createElement('strong');
+    author.textContent = 'Alicia Faria';
+    const meta = document.createElement('small');
+    meta.textContent = 'Agora';
+    const paragraph = document.createElement('p');
+    paragraph.textContent = value;
+    content.append(author, meta, paragraph);
+    comment.append(avatar, content);
+    $('#article-comment-list').appendChild(comment);
+    input.value = '';
+    showToast('Comentário adicionado nesta demonstração.');
+  });
+
   const languageMenu = $('#language-menu');
   $$('[data-language-toggle]').forEach((button) => button.addEventListener('click', () => {
     if (!languageMenu || button.closest('.mobile-utility-row')) {
@@ -137,7 +361,8 @@
   $$('[data-language]').forEach((button) => button.addEventListener('click', () => {
     const language = button.dataset.language;
     if (language === 'pt-BR') showToast('Português (Brasil) selecionado.');
-    else showToast('Inglês ficará disponível na evolução do portal.');
+    else if (language === 'en') showToast('English estará disponível na evolução do portal.');
+    else showToast('Español estará disponível na evolução do portal.');
     $$('[data-language]').forEach((option) => option.setAttribute('aria-current', String(option === button)));
     if (languageMenu) languageMenu.hidden = true;
   }));
@@ -418,6 +643,21 @@
   });
   $('#read-client').addEventListener('click', () => speak('Próximo atendimento às dez e trinta. João Burgos. Massagem rápida de vinte minutos, na Sala Bem-estar. A chegada ainda não foi confirmada.'));
   $('#read-day').addEventListener('click', () => speak('Você tem seis atendimentos agendados hoje e uma vaga livre. Dois atendimentos foram concluídos. O próximo é João, às dez e trinta. Às onze horas, Geovana está confirmada. Às onze e trinta há um horário livre.'));
+  $('#register-no-show').addEventListener('click', (event) => {
+    const confirmed = window.confirm('Confirmar que João Burgos não compareceu ao atendimento das 10h30? Esta ação ficará registrada no histórico do serviço.');
+    if (!confirmed) return;
+    const arrival = $('#arrival-state');
+    $('strong', arrival).textContent = 'Não compareceu';
+    arrival.classList.add('no-show');
+    $('#next-schedule-item').classList.remove('next');
+    $('#next-schedule-item').classList.add('no-show');
+    $('#next-schedule-description').textContent = 'Ausência registrada';
+    $('#next-schedule-status').textContent = 'Faltou';
+    $('#confirm-arrival').disabled = true;
+    $('#start-session').disabled = true;
+    event.currentTarget.disabled = true;
+    showToast('Não comparecimento registrado. A operação poderá oferecer o horário para encaixe.');
+  });
 
   // SELENA accessible assistant demo.
   const selenaPanel = $('#selena-panel');
@@ -429,18 +669,6 @@
   let recognitionEnabled = false;
   let conversationActive = false;
   let assistantSpeaking = false;
-
-  function openSelena() {
-    selenaPanel.classList.add('open');
-    if (window.matchMedia('(max-width: 1080px)').matches) document.body.classList.add('no-scroll');
-    $('#selena-text').focus();
-  }
-  function closeSelena() {
-    selenaPanel.classList.remove('open');
-    document.body.classList.remove('no-scroll');
-  }
-  $('#open-selena').addEventListener('click', openSelena);
-  $('#selena-close').addEventListener('click', closeSelena);
 
   function updateSelenaStatus(text, listening = false) {
     $('span', selenaStatus).textContent = text;
@@ -495,10 +723,12 @@
   function speakSelena(text) {
     appendMessage('SELENA', text);
     assistantSpeaking = true;
+    selenaPanel.classList.add('is-speaking');
     updateSelenaStatus('SELENA está falando…', recognitionEnabled);
     try { recognition?.abort(); } catch (_) { /* browser may already have stopped */ }
     speak(text, () => {
       assistantSpeaking = false;
+      selenaPanel.classList.remove('is-speaking');
       if (recognitionEnabled) {
         updateSelenaStatus(conversationActive ? 'Conversa ativa · diga “tchau” para encerrar' : 'Aguardando “Oi, SELENA”', true);
         startRecognitionSafely();
@@ -561,7 +791,6 @@
   }
 
   wakeButton.addEventListener('click', () => {
-    openSelena();
     if (!recognition && !setupRecognition()) {
       updateSelenaStatus('Comando de voz indisponível · use texto');
       showToast('Este navegador não oferece reconhecimento de voz. Use a conversa por texto.');
